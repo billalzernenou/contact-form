@@ -11,7 +11,7 @@ $.addEventListener("DOMContentLoaded", () => {
       message: $.querySelector("#message").value,
     };
     const response = await axios.post(
-      "http://contact-form-back.herokuapp.com/form",
+      "https://contact-form-back.herokuapp.com/form",
       data
     );
     console.log(response.data);
