@@ -10,7 +10,10 @@ $.addEventListener("DOMContentLoaded", () => {
       subject: $.querySelector("#subject").value,
       message: $.querySelector("#message").value,
     };
-    const response = await axios.post("http://localhost:3000/form", data);
+    const response = await axios.post(
+      "http://contact-form-back.herokuapp.com/form",
+      data
+    );
     console.log(response.data);
 
     if (response.status === 200) {
