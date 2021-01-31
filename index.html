@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Formulaire de contact</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Formulaire de contact</h1>
+      <form action="">
+        <input id="first-name" type="text" placeholder="Prénom" />
+        <input id="last-name" type="text" placeholder="Nom" />
+        <input id="email" type="email" placeholder="Email" />
+        <input id="subject" type="text" placeholder="Sujet" />
+        <textarea id="message" name="message" rows="8" cols="50">
+         Tapez votre message ici
+        </textarea>
+        <input id="submit" type="submit" value="Envoyer le Message" />
+      </form>
+    </div>
+    <script>
+      const $ = document;
+      $.querySelector("#submit").addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        const data = {
+          firstName: $.querySelector("#first-name").value,
+          lastName: $.querySelector("#last-name").value,
+          email: $.querySelector("#email").value,
+          subject: $.querySelector("#subject").value,
+          message: $.querySelector("#message").value,
+        };
+        const response = await axios.post("http://localhost:3000/form", data);
+        console.log(response.data);
+
+        if (response.status === 200) {
+          alert("votre message a bien été envoyé");
+        } else {
+          alert("erreur");
+        }
+      });
+    </script>
+  </body>
+</html>
